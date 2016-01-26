@@ -1,0 +1,54 @@
+{
+    "name": "sonar/valiable",
+    "description": ":package_description",
+    "keywords": [
+        "league",
+        ":package_name"
+    ],
+    "homepage": "https://github.com/Sonar/Valiable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yuichi Matsumoto",
+            "email": "matsumoto@snr.jp",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+       {
+        "type": "vcs",
+        "url" : "/var/www/laravel_packages/sources/laravel/packages/Sonar/Common/"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "illuminate/cache": "~5.1",
+        "illuminate/console": "~5.1",
+        "sonar/common": "dev-master",
+        "php" : ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "mockery/mockery": "0.9.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "files": ["src/functions_include.php"],
+        "psr-4": {
+            "Sonar\\Valiable\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sonar\\Valiable\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
