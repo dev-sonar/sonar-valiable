@@ -53,7 +53,11 @@ class Valiable
         $data = Yaml::parse($yaml_data);
         foreach ( $data as $name => $rec ) {
             foreach ( $rec as $key => $values ) {
-                $this->set($name . '_' . $key,$values['value']);
+                if ( isset($values['value'] ) ) {
+                    $this->set($name . '_' . $key,$values['value']);
+                } else {
+                    throw new \Exception('valueが見つかりません。key=' . $key);
+                }
             }
         }
     }
