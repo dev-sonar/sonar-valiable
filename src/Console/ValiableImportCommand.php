@@ -27,7 +27,7 @@ class ValiableImportCommand extends Command
 
         if ( is_array($files) && count($files) > 0 ) {
             foreach ( $this->filesystem->allFiles($path) as $rec ) {
-                if ( preg_match("/\.yml/",$rec->getPathname()) ) {
+                if ( preg_match("/\.yml$/",$rec->getPathname()) ) {
                     $this->valiable->importYaml($this->filesystem->get($rec->getPathname()));
                 }
             }
