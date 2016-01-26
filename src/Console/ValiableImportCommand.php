@@ -23,9 +23,16 @@ class ValiableImportCommand extends Command
     public function fire()
     {
         $path = storage_path('app/sonar_valiables');
+        $files = $this->filesystem->allFiles($path);
 
-        foreach ( $this->filesystem->allFiles($path) as $rec ) {
-            $this->valiable->importYaml($this->filesystem->get($rec->getPathname()));
+        if ( is_array($files) && count($files) > 0 ) {
+            foreach ( $this->filesystem->allFiles($path) as $rec ) {
+                if ( preg_match("/\.yml/",$rec->getPathname()) ) {
+                    $this->valiable->importYaml($this->filesystem->get($rec->getPathname()));
+                }
+            }
+        } else {
+            throw new \Exception('ファイルが見つかりません。[' . $path . ']');
         }
     }
 
