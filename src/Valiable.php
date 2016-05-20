@@ -8,6 +8,7 @@ class Valiable
 {
     protected $prefix = "sonar_valiable_";
     protected $name_list = "sonar_valiables";
+    private $cache;
 
     public function __construct(Cache $cache)
     {
@@ -51,12 +52,14 @@ class Valiable
     public function importYaml($yaml_data)
     {
         $data = Yaml::parse($yaml_data);
-        foreach ( $data as $name => $rec ) {
-            foreach ( $rec as $key => $values ) {
-                if ( isset($values['value'] ) ) {
-                    $this->set($name . '_' . $key,$values['value']);
-                } else {
-                    throw new \Exception('valueが見つかりません。key=' . $key);
+        if ( is_array($data) ) {
+            foreach ( $data as $name => $rec ) {
+                foreach ( $rec as $key => $values ) {
+                    if ( isset($values['value'] ) ) {
+                        $this->set($name . '_' . $key,$values['value']);
+                    } else {
+                        throw new \Exception('valueが見つかりません。key=' . $key);
+                    }
                 }
             }
         }
