@@ -12,9 +12,9 @@ if (! function_exists('app')) {
     function app($make = null, $parameters = [])
     {
         if (is_null($make)) {
-            return Container::getInstance();
+            return Container::instance();
         }
 
-        return Container::getInstance()->make($make, $parameters);
+        return Container::instance()->make($make, $parameters);
     }
 }
