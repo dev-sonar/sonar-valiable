@@ -16,8 +16,9 @@
     ],
     "require": {
         "illuminate/support": "~5.1",
-        "illuminate/cache": "~5.1",
+        "illuminate/database": "~5.1",
         "illuminate/console": "~5.1",
+        "illuminate/filesystem": "~5.1",
         "sonar/common": "dev-master",
         "php" : ">=5.3.0"
     },
