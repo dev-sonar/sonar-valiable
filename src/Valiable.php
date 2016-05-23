@@ -52,10 +52,10 @@ class Valiable
     public function importYaml($yaml_data)
     {
         $data = Yaml::parse($yaml_data);
-        if ( is_array($data) ) {
+        if ( is_array($data) === true) {
             foreach ( $data as $name => $rec ) {
                 foreach ( $rec as $key => $values ) {
-                    if ( isset($values['value'] ) ) {
+                    if ( isset($values['value']) === true) {
                         $this->set($name . '_' . $key,$values['value']);
                     } else {
                         throw new \Exception('valueが見つかりません。key=' . $key);
