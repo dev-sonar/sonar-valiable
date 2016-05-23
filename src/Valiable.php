@@ -20,16 +20,16 @@ class Valiable
 
         return $data ? $this->decode($data) : null;
     }
-    public function getValue($name,$key)
+    public function getValue($name, $key)
     {
-        if ( is_null($key) ) {
+        if (is_null($key)) {
             throw new \Exception('value is null');
         }
         $data = $this->cache->get($this->prefix . $name);
-        if ( ! $data ) return null;
+        if ( ! $data) return null;
 
         $data = $this->decode($data);
-        if ( isset($data[$key]) === false  ) {
+        if (isset($data[$key]) === false) {
             throw new \Exception('value is not found. key=' . $key);
         }
         return $data[$key];
@@ -37,26 +37,26 @@ class Valiable
     public function getNames()
     {
         $names = $this->cache->get($this->name_list);
-        if ( $names ) {
+        if ($names) {
             $names = $this->decode($names);
         } else {
             $names = [];
         }
         return $names;
     }
-    public function set($name,$data)
+    public function set($name, $data)
     {
-        $this->cache->forever($this->prefix . $name,$this->encode($data));
+        $this->cache->forever($this->prefix . $name, $this->encode($data));
         $this->addNames($name);
     }
     public function importYaml($yaml_data)
     {
         $data = Yaml::parse($yaml_data);
-        if ( is_array($data) === true) {
-            foreach ( $data as $name => $rec ) {
-                foreach ( $rec as $key => $values ) {
-                    if ( isset($values['value']) === true) {
-                        $this->set($name . '_' . $key,$values['value']);
+        if (is_array($data) === true) {
+            foreach ($data as $name => $rec) {
+                foreach ($rec as $key => $values) {
+                    if (isset($values['value']) === true) {
+                        $this->set($name . '_' . $key, $values['value']);
                     } else {
                         throw new \Exception('valueが見つかりません。key=' . $key);
                     }
@@ -67,8 +67,8 @@ class Valiable
     public function clear()
     {
         $names = $this->getNames();
-        if ( count($names) > 0 ) {
-            foreach ( $names as $name ) {
+        if (count($names) > 0) {
+            foreach ($names as $name) {
                 $this->cache->forget($this->prefix . $name);
             }
         }
@@ -77,10 +77,10 @@ class Valiable
     protected function addNames($name)
     {
         $names = $this->getNames();
-        if ( in_array($name,$names) === false ) {
+        if (in_array($name, $names) === false) {
             $names[] = $name;
         }
-        $this->cache->forever($this->name_list,$this->encode($names));
+        $this->cache->forever($this->name_list, $this->encode($names));
     }
     protected function encode($data)
     {
