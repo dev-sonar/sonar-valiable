@@ -23,15 +23,15 @@ class ValiableListCommand extends Command
         $names = $this->valiable->getNames();
         $tmp = [];
         $len = 0;
-        foreach ( $names as $name ) {
+        foreach ($names as $name) {
             $len = strlen($name) > $len ? strlen($name) : $len;
             $tmp[] = [
                 'name' => $name,
                 'items' => serialize($this->valiable->get($name)),
             ];
         }
-        $headers = ['name','items'];
-        $this->table($headers,$tmp);
+        $headers = ['name', 'items'];
+        $this->table($headers, $tmp);
     }
 }
 
