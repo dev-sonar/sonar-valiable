@@ -88,6 +88,14 @@ __EOD__;
         $obj = new Valiable($this->cache);
         $this->assertNull($obj->importYaml($a));
     }
+    public function testimportYaml2()
+    {
+        $this->cache->shouldReceive('forever')->andReturn(null);
+        $this->cache->shouldReceive('get')->andReturn(null);
+        $obj = new Valiable($this->cache);
+        $this->assertNull($obj->importYaml(""));
+    }
+
     /**
      * @expectedException Exception
      */

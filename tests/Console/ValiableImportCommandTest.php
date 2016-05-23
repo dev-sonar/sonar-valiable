@@ -57,6 +57,7 @@ class ValiableImportCommandTest extends TestCase
 
         $this->assertNull($obj->fire());
     }
+
     /**
      *      * @expectedException Exception
      */
@@ -64,6 +65,18 @@ class ValiableImportCommandTest extends TestCase
     {
         $mock = Mockery::mock(Stdclass::class);
         $this->file->shouldReceive('allFiles')->andReturn(false);
+
+        $obj = new ValiableImportCommand($this->valiable,$this->file);
+
+        $this->assertNull($obj->fire());
+    }
+    /**
+     *      * @expectedException Exception
+     */
+    public function testErrorFire2()
+    {
+        $mock = Mockery::mock(Stdclass::class);
+        $this->file->shouldReceive('allFiles')->andReturn([]);
 
         $obj = new ValiableImportCommand($this->valiable,$this->file);
 
