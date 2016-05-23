@@ -88,6 +88,22 @@ __EOD__;
         $obj = new Valiable($this->cache);
         $this->assertNull($obj->importYaml($a));
     }
+    /**
+     * @expectedException Exception
+     */
+    public function testErrorimportYaml()
+    {
+        $a = <<<__EOD__
+accounts:
+  is_lock:
+    name: "test"
+__EOD__;
+        $this->cache->shouldReceive('forever')->andReturn(null);
+        $this->cache->shouldReceive('get')->andReturn(null);
+        $obj = new Valiable($this->cache);
+        $this->assertNull($obj->importYaml($a));
+    }
+
     public function testclear()
     {
         $this->cache->shouldReceive('get')->andReturn(base64_encode(serialize(['a' => '1','b' => 2])));

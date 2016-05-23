@@ -43,7 +43,31 @@ class ValiableImportCommandTest extends TestCase
         $obj = new ValiableImportCommand($this->valiable,$this->file);
 
         $this->assertNull($obj->fire());
+    }
+    public function testFire2()
+    {
+        $mock = Mockery::mock(Stdclass::class);
+        $mock->shouldReceive('getPathname')->andReturn('hoge.yml');
 
+        $this->file->shouldReceive('allFiles')->andReturn([$mock]);
+        $this->file->shouldReceive('get')->andReturn('hoge');
+        $this->valiable->shouldReceive('importYaml')->andReturn(null);
+
+        $obj = new ValiableImportCommand($this->valiable,$this->file);
+
+        $this->assertNull($obj->fire());
+    }
+    /**
+     *      * @expectedException Exception
+     */
+    public function testErrorFire()
+    {
+        $mock = Mockery::mock(Stdclass::class);
+        $this->file->shouldReceive('allFiles')->andReturn(false);
+
+        $obj = new ValiableImportCommand($this->valiable,$this->file);
+
+        $this->assertNull($obj->fire());
     }
 
 
