@@ -1,5 +1,6 @@
 <?php
-use Illuminate\Contracts\Container\Container;
+use Illuminate\Container\Container;
+
 
 if (! function_exists('app')) {
     /**
