@@ -11,7 +11,7 @@ class ValiableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->cache = Mockery::mock('Illuminate\Contracts\Cache\Repository');
+        $this->cache = Mockery::mock('Illuminate\Cache\Repository');
     }
     public function tearDown()
     {

@@ -1,7 +1,7 @@
 <?php
 namespace Sonar\Valiable;
 
-use Illuminate\Contracts\Cache\Repository as Cache;
+use Illuminate\Cache\Repository as Cache;
 use Symfony\Component\Yaml\Yaml;
 
 class Valiable
