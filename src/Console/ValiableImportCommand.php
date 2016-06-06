@@ -25,14 +25,13 @@ class ValiableImportCommand extends Command
         $path = storage_path('app/sonar_valiables');
         $files = $this->filesystem->allFiles($path);
 
-        if ( is_array($files) && count($files) > 0 ) {
-            foreach ( $this->filesystem->allFiles($path) as $rec ) {
-                if ( preg_match("/\.yml$/",$rec->getPathname()) ) {
-                    $this->valiable->importYaml($this->filesystem->get($rec->getPathname()));
-                }
-            }
-        } else {
+        if ( is_array($files) === false || count($files) == 0 ) {
             throw new \Exception('ファイルが見つかりません。[' . $path . ']');
+        }
+        foreach ( $files as $rec ) {
+            if ( preg_match("/\.yml$/",$rec->getPathname()) ) {
+                $this->valiable->importYaml($this->filesystem->get($rec->getPathname()));
+            }
         }
     }
 
