@@ -38,7 +38,7 @@ $ php artisan vendor:publish
 Create Valiables Directory to storage_path
 put Yaml Files to Valiables Direcoty 
 
-Exsample:
+Example:
 ``` file
 properties:
   parameter_kinds:
@@ -58,9 +58,9 @@ Example Code
 ``` php
 use Valiable;
 
-print_r(Valiable::get('properties_parameter_kinds')); # array('1' => '土地','2' => '一戸建て','3'=>'マンション')
+print_r(Valiable::get('properties_parameter_kinds')); # Array([1] => 土地 [2] => 一戸建て [3] => マンション )
 print_r(Valiable::getValue('properties_parameter_kinds',1)); # 土地
-print_r(Valiable::getNames()); # array('properties_parameter_kinds')
+print_r(Valiable::getNames()); # Array([0] => properties_parameter_kinds)
 
 ```
 
