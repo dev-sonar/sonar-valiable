@@ -39,7 +39,7 @@ class ValiableServiceProvider extends ServiceProvider
     protected function registerValiableBuilder()
     {
         $this->app->singleton('sonar_valiable',function($app) {
-            return new Valiable($app['cache']);
+            return new Valiable($app['cache.store']);
         });
     }
 
