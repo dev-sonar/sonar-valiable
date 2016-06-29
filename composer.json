@@ -1,11 +1,11 @@
 {
     "name": "sonar/valiable",
-    "description": ":package_description",
+    "description": "sonar valiablesn",
     "keywords": [
-        "league",
-        ":package_name"
+        "sonar",
+        "valiable"
     ],
-    "homepage": "https://github.com/Sonar/Valiable",
+    "homepage": "https://github.com/dev-sonar/sonar-valiable",
     "license": "MIT",
     "authors": [
         {
