@@ -12,7 +12,7 @@ class ValiableServiceProviderTest extends TestCase
 {
     public function setUp()
     {
-        $this->application = Mockery::mock(Application::class);
+        $this->application = Mockery::mock(Application::class,\ArrayAccess::class);
         $this->event = Mockery::mock(Dispacher::class);
         parent::setUp();
     }
@@ -32,7 +32,10 @@ class ValiableServiceProviderTest extends TestCase
     public function testRegister()
     {
         $this->event->shouldReceive('listen');
-        $obj = new ValiableServiceProvider(['events' => $this->event]);
+        $this->application->shouldReceive('offsetGet')->with('events')->andReturn($this->event);
+        $this->application->shouldReceive('singleton');
+        $obj = new ValiableServiceProvider($this->application);
+       // ['app' => $this->application,'events' => $this->event]);
         $this->assertNull($obj->register());
 
     }

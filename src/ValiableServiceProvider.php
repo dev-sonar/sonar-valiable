@@ -32,6 +32,15 @@ class ValiableServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands($this->commands);
+
+        $this->registerValiableBuilder();
+    }
+
+    protected function registerValiableBuilder()
+    {
+        $this->app->singleton('sonar_valiable',function($app) {
+            return new Valiable($app['cache']);
+        });
     }
 
     public function provides()
