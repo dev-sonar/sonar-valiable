@@ -15,6 +15,56 @@ Via Composer
 $ composer require sonar/valiable:dev-master
 ```
 
+Add ServiceProvider in config.php
+``` php
+    'providers' => [
+        :
+        :
+        Sonar\Valiable\ValiableServiceProvider::class,
+    ],
+
+    'aliases' => [
+        :
+        :
+        'Valiable' => Sonar\Valiable\ValiableFacade::class,
+    ],
+```
+
+Artisan Command
+``` bash
+$ php artisan vendor:publish
+```
+
+Create Valiables Directory to storage_path
+put Yaml Files to Valiables Direcoty 
+
+Exsample:
+``` file
+properties:
+  parameter_kinds:
+    name: "種別"
+    value:
+      "1": "土地"
+      "2": "一戸建て"
+      "3": "マンション"
+```
+
+Valiable Import
+``` bash
+$ php artisan valiable:import
+```
+
+Example Code
+``` php
+use Valiable;
+
+print_r(Valiable::get('properties_parameter_kinds')); # array('1' => '土地','2' => '一戸建て','3'=>'マンション')
+print_r(Valiable::getValue('properties_parameter_kinds',1)); # 土地
+print_r(Valiable::getNames()); # array('properties_parameter_kinds')
+
+```
+
+
 <!--
 ## Usage
 
