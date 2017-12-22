@@ -18,6 +18,11 @@ class ValiableClearCommand extends Command
         parent::__construct();
     }
 
+    public function handle()
+    {
+        return $this->fire();
+    }
+
     public function fire()
     {
         $this->valiable->clear();

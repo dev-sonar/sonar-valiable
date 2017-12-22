@@ -18,6 +18,11 @@ class ValiableListCommand extends Command
         parent::__construct();
     }
 
+    public function handle()
+    {
+        return $this->fire();
+    }
+
     public function fire()
     {
         $names = $this->valiable->getNames();

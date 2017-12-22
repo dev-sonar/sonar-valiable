@@ -19,6 +19,10 @@ class ValiableImportCommand extends Command
         $this->filesystem = $filesystem;
         parent::__construct();
     }
+    public function handle()
+    {
+        return $this->fire();
+    }
 
     public function fire()
     {
