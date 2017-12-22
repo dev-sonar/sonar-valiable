@@ -45,6 +45,7 @@ class ValiableListCommandTest extends TestCase
         $obj = new MockValiableListCommand($this->valiable);
 
         $this->assertNull($obj->fire());
+        $this->assertNull($obj->handle());
 
     }
 

@@ -81,6 +81,7 @@ class ValiableImportCommandTest extends TestCase
         $obj = new ValiableImportCommand($this->valiable,$this->file);
 
         $this->assertNull($obj->fire());
+        $this->assertNull($obj->handle());
     }
 
 

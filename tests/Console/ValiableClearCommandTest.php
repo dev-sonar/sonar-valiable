@@ -35,7 +35,7 @@ class ValiableClearCommandTest extends TestCase
         $obj = new ValiableClearCommand($this->valiable);
 
         $this->assertNull($obj->fire());
-
+        $this->assertNull($obj->handle());
     }
 
 
