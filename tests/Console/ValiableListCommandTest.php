@@ -11,7 +11,7 @@ require_once __DIR__ . "/../helpers.php";
 
 class MockValiableListCommand extends ValiableListCommand
 {
-    public function table($header,$tmp)
+    public function table($headers, $rows, $tableStyle = 'default', array $columnStyles=array())
     {
         return null;
     }
