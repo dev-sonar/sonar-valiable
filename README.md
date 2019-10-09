@@ -11,7 +11,14 @@
 Via Composer
 
 ``` bash
-$ composer require sonar/valiable:dev-master
+Case laravel 5.x
+
+$ composer require sonar/valiable:1.0.0
+
+Case laravel 6.x
+
+$ composer require sonar/valiable:2.0.0
+
 ```
 
 Add ServiceProvider in config.php
