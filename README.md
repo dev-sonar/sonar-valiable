@@ -19,6 +19,10 @@ Case laravel 6.x
 
 $ composer require sonar/valiable:2.*
 
+Case laravel 8.x
+
+$ composer require sonar/valiable:3.*
+
 ```
 
 Add ServiceProvider in config.php
