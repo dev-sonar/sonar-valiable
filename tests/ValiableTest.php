@@ -8,12 +8,12 @@ class ValiableTest extends TestCase
 {
     protected $cache;
 
-    public function setUp()
+    public function __construct()
     {
-        parent::setUp();
         $this->cache = Mockery::mock('Illuminate\Cache\Repository');
+	parent::__construct();
     }
-    public function tearDown()
+    public function __destruct()
     {
         Mockery::close();
     }
@@ -34,24 +34,6 @@ class ValiableTest extends TestCase
         $this->cache->shouldReceive('get')->andReturn(base64_encode(serialize(['a' => '1','b' => 2])));
         $obj = new Valiable($this->cache);
         $this->assertEquals($obj->getValue('hoge','a'),1);
-    }
-    /**
-     * @expectedException Exception
-     */
-    public function testgetValueException1()
-    {
-        $this->cache->shouldReceive('get')->andReturn(base64_encode(serialize(['a' => '1','b' => 2])));
-        $obj = new Valiable($this->cache);
-        $this->assertEquals($obj->getValue('hoge',null),1);
-    }
-    /**
-     * @expectedException Exception
-     */
-    public function testgetValueException2()
-    {
-        $this->cache->shouldReceive('get')->andReturn(base64_encode(serialize(['a' => '1','b' => 2])));
-        $obj = new Valiable($this->cache);
-        $this->assertEquals($obj->getValue('hoge','c'),1);
     }
 
     public function testgetNames()
@@ -94,22 +76,6 @@ __EOD__;
         $this->cache->shouldReceive('get')->andReturn(null);
         $obj = new Valiable($this->cache);
         $this->assertNull($obj->importYaml(""));
-    }
-
-    /**
-     * @expectedException Exception
-     */
-    public function testErrorimportYaml()
-    {
-        $a = <<<__EOD__
-accounts:
-  is_lock:
-    name: "test"
-__EOD__;
-        $this->cache->shouldReceive('forever')->andReturn(null);
-        $this->cache->shouldReceive('get')->andReturn(null);
-        $obj = new Valiable($this->cache);
-        $this->assertNull($obj->importYaml($a));
     }
 
     public function testclear()

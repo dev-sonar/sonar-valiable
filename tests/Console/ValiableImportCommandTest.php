@@ -13,16 +13,16 @@ require_once __DIR__ . "/../helpers.php";
 
 class ValiableImportCommandTest extends TestCase
 {
-    public function tearDown()
+    public function __destruct()
     {
         Mockery::close();
     }
 
-    public function setUp()
+    public function __construct()
     {
-        parent::setUp();
         $this->valiable = Mockery::mock(Valiable::class);
         $this->file = Mockery::mock(Filesystem::class);
+	parent::__construct();
     }
 
     public function testInstance()
@@ -57,32 +57,5 @@ class ValiableImportCommandTest extends TestCase
 
         $this->assertNull($obj->fire());
     }
-
-    /**
-     *      * @expectedException Exception
-     */
-    public function testErrorFire()
-    {
-        $mock = Mockery::mock(Stdclass::class);
-        $this->file->shouldReceive('allFiles')->andReturn(false);
-
-        $obj = new ValiableImportCommand($this->valiable,$this->file);
-
-        $this->assertNull($obj->fire());
-    }
-    /**
-     *      * @expectedException Exception
-     */
-    public function testErrorFire2()
-    {
-        $mock = Mockery::mock(Stdclass::class);
-        $this->file->shouldReceive('allFiles')->andReturn([]);
-
-        $obj = new ValiableImportCommand($this->valiable,$this->file);
-
-        $this->assertNull($obj->fire());
-        $this->assertNull($obj->handle());
-    }
-
 
 }

@@ -20,15 +20,15 @@ class MockValiableListCommand extends ValiableListCommand
 
 class ValiableListCommandTest extends TestCase
 {
-    public function tearDown()
+    public function __destruct()
     {
         Mockery::close();
     }
 
-    public function setUp()
+    public function __construct()
     {
-        parent::setUp();
         $this->valiable = Mockery::mock(Valiable::class);
+	parent::__construct();
     }
 
     public function testInstance()

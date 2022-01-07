@@ -11,15 +11,15 @@ require_once __DIR__ . "/../helpers.php";
 
 class ValiableClearCommandTest extends TestCase
 {
-    public function tearDown()
+    public function __destruct()
     {
         Mockery::close();
     }
 
-    public function setUp()
+    public function __construct()
     {
-        parent::setUp();
         $this->valiable = Mockery::mock(Valiable::class);
+	parent::__construct();
     }
 
     public function testInstance()

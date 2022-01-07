@@ -1,9 +1,9 @@
 <?php
 namespace Sonar\Valiable\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
-class TestCase extends PHPUnit_Framework_TestCase
+class TestCase extends BaseTestCase
 {
     protected $baseUrl = 'http://localhost';
 
