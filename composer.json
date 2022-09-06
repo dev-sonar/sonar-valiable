@@ -15,11 +15,11 @@
         }
     ],
     "require": {
-        "illuminate/support": "^8.0",
-        "illuminate/database": "^8.0",
-        "illuminate/console": "^8.0",
-        "illuminate/cache": "^8.0",
-        "illuminate/filesystem": "^8.0",
+        "illuminate/support": "^9.0",
+        "illuminate/database": "^9.0",
+        "illuminate/console": "^9.0",
+        "illuminate/cache": "^9.0",
+        "illuminate/filesystem": "^9.0",
         "sonar/common": "^3.0",
         "php" : ">=7.2.0"
     },
